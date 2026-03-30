@@ -4,10 +4,25 @@ import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 
 const projects = [
+
+  {
+    title: "ExtriveInnovations",
+    description: "A high-performance website, presenting industrial exosuit solutions through interactive 3D visuals, modern UI, and responsive design.",
+    tech: ["Next.js", "React Three Fiber", "Nodemailer"],
+    highlights: [
+  "Interactive website showcasing industrial exosuit solutions",
+  "Modern UI with responsive design and 3D visuals",
+],
+    gradient: "from-[#1A2A0E] via-[#111A08] to-[#0B0F05]",
+    accent: "bg-emerald-500/10",
+    // Added individual links here:
+    liveLink: "https://ExtriveInnovations.com",
+    githubLink: "https://github.com/harsha1001987/extriveinnovations",
+  },
   {
     title: "LockIn",
     description: "Structured financial education platform focused on markets, discipline, and crash decision training.",
-    tech: ["Next.js , Supabase , Tailwind CSS , Custom Charts"],
+    tech: ["Next.js ", "Supabase" ," Tailwind CSS" , "Custom Charts"],
     highlights: [
        "Interactive crash simulator with long-term outcome visualization",
        "Framework-based learning (no tips, no hype)",
@@ -32,20 +47,7 @@ const projects = [
     liveLink: "https://paleo-path.vercel.app/",
     githubLink: "https://github.com/harsha1001987/PaleoPath",
   },
-  {
-    title: "ShopZen",
-    description: "Modern e-commerce interface with cart and checkout flow.",
-    tech: ["React", "Node.js", "Stripe"],
-    highlights: [
-      "Dynamic cart with real-time total updates",
-      "Mock payment integration with Stripe UI",
-    ],
-    gradient: "from-[#1A2A0E] via-[#111A08] to-[#0B0F05]",
-    accent: "bg-emerald-500/10",
-    // Added individual links here:
-    liveLink: "https://your-shopzen-live-link.com",
-    githubLink: "https://github.com/yourusername/shopzen",
-  },
+  
 ];
 
 const sectionFade = {
