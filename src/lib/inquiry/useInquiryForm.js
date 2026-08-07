@@ -101,6 +101,14 @@ export function useInquiryForm() {
           message: data.message,
         });
 
+        // Fire-and-forget: n8n automation is a bonus channel, never blocks
+        // or fails the user-facing submission (the email above already sent).
+        fetch("/api/inquiry", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        }).catch(() => {});
+
         // Clear every field on success.
         setValues(EMPTY);
         setErrors({});
