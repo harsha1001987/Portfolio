@@ -1,50 +1,155 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   BRUTAL & SHARP — editorial studio layout on the toxic-void palette.
+   No color exists outside the six tokens below.
+   ========================================================================== */
+
+:root {
+  --bg-dark: #050505; /* The Void */
+  --bg-light: #efefea; /* Raw Bone */
+  --border-hard: #808080; /* System Gray */
+  --accent-toxic: #ccff00; /* Toxic Acid */
+  --accent-alert: #ff0033; /* Warning Red */
+  --text-pure: #ffffff; /* Pure light */
+}
+
 @theme {
-  --color-background: #12080B;
-  --color-surface: #1C0D11;
-  --color-brand-burgundy: #3A0F1C;
-  --color-accent-gold: #D6B36A;
-  --color-text: #F4EEE6;
-  --color-muted-text: #CBBFB2;
-  --color-border: #2A141B;
+  --color-void: #050505;
+  --color-bone: #efefea;
+  --color-hard: #808080;
+  --color-toxic: #ccff00;
+  --color-alert: #ff0033;
+  --color-pure: #ffffff;
+
+  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
 html {
   scroll-behavior: smooth;
-}
-
-::selection {
-  background: #D6B36A;
-  color: #12080B;
+  background: var(--bg-dark);
 }
 
 body {
-  background: var(--color-background);
-  color: var(--color-text);
-  font-family: var(--font-inter);
+  background: var(--bg-dark);
+  color: var(--text-pure);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.5;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Scroll margin for section anchors */
+::selection {
+  background: var(--accent-toxic);
+  color: var(--bg-dark);
+}
+
 section[id] {
-  scroll-margin-top: 80px;
+  scroll-margin-top: 6rem;
 }
 
-/* Custom scrollbar */
+/* Native cursor hidden only where the custom cursor actually mounts. */
+body[data-custom-cursor="on"],
+body[data-custom-cursor="on"] a,
+body[data-custom-cursor="on"] button {
+  cursor: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-toxic);
+  outline-offset: 3px;
+}
+
+/* --- Type ----------------------------------------------------------------- */
+.headline {
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.mono-meta {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+}
+
+/* --- Motion --------------------------------------------------------------- */
+@keyframes ed-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: ed-marquee 30s linear infinite;
+  will-change: transform;
+}
+
+.marquee-shell:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes ed-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+.arrow-bounce {
+  animation: ed-bounce 2.4s ease-in-out infinite;
+}
+
+/* --- Scrollbar ------------------------------------------------------------ */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #12080B;
+  background: var(--bg-dark);
+  border-left: 1px solid var(--border-hard);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3A0F1C;
-  border-radius: 3px;
+  background: var(--border-hard);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #D6B36A;
+  background: var(--accent-toxic);
+}
+
+/* --- Reduced motion ------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee-track,
+  .arrow-bounce {
+    animation: none !important;
+  }
+
+  body[data-custom-cursor="on"],
+  body[data-custom-cursor="on"] a,
+  body[data-custom-cursor="on"] button {
+    cursor: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
 }

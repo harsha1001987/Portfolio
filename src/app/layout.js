@@ -1,32 +1,23 @@
-import { Outfit, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
-
-const outfit = Outfit({
-  variable: "--font-outfit",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "700"],
   display: "swap",
 });
 
 export const metadata = {
-  title: "Portfolio — Full Stack Developer",
+  title: "M Harshavardhana Raju — Web Applications & Automation",
   description:
-    "Crafting creative, high-performance web experiences. Full Stack Developer specializing in React, Node.js, and UI Design.",
+    "Full-stack web application builds and business automation systems. React, Next.js, Node, MongoDB, Python, C++.",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="dark">
-      <body
-        className={`${outfit.variable} ${inter.variable} antialiased bg-background text-text`}
-      >
+    <html lang="en">
+      <body className={`${inter.variable} bg-void text-pure antialiased`}>
         {children}
       </body>
     </html>
